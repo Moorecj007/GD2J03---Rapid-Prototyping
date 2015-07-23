@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Enemies</name>
+    <events>
+        <comment>If the players bullet hits an enemy. Subtract the bullets damage from the enemy. Destroy the enemy if its health is reduced to 0 or less.</comment>
+        <event-block sid="8412349340005815">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="9138733396831383" type="EnemyPoddles">
+                    <param id="0" name="Instance variable">Health</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="1" name="Is overlapping another object" sid="4531642516349994" type="EnemyPoddles">
+                    <param id="0" name="Object">ShipChassis</param>
+                </condition>
+                <condition id="1" name="Is overlapping another object" sid="9457348162838186" type="ShipChassis">
+                    <param id="0" name="Object">ShipWingLeft</param>
+                </condition>
+                <condition id="1" name="Is overlapping another object" sid="7818376841477297" type="ShipChassis">
+                    <param id="0" name="Object">ShipWingRight</param>
+                </condition>
+                <condition id="1" name="Is overlapping another object" sid="1336025029466726" type="ShipChassis">
+                    <param id="0" name="Object">ShipEngine</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="679881666835665" type="EnemyPoddles" />
+                <action id="-9" name="Destroy" sid="5405157329383986" type="ShipEngine" />
+                <action id="-9" name="Destroy" sid="32722993023065" type="ShipWingLeft" />
+                <action id="-9" name="Destroy" sid="9174502835416455" type="ShipWingRight" />
+                <action id="-13" name="Set boolean" sid="5795570484735744" type="ShipChassis">
+                    <param id="0" name="Instance variable">Owned</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-18" name="Rotate clockwise" sid="5511575152943804" type="ShipChassis">
+                    <param id="0" name="Degrees">180</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Every 2 seconds make a new enemy spawn at a random horizontal position at the top of the screen.</comment>
+        <event-block sid="8713808741531476">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="2436654477910363" type="System">
+                    <param id="0" name="Interval (seconds)">2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="7182949855679307" type="System">
+                    <param id="0" name="Object to create">EnemyPoddles</param>
+                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                    <param id="2" name="X">random(30, 450)</param>
+                    <param id="3" name="Y">-20</param>
+                </action>
+                <action id="-3" name="Create object" sid="4388380498663665" type="System">
+                    <param id="0" name="Object to create">ShipChassis</param>
+                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                    <param id="2" name="X">EnemyPoddles.X</param>
+                    <param id="3" name="Y">EnemyPoddles.Y</param>
+                </action>
+                <action id="-8" name="Set angle" sid="6276136523197616" type="ShipChassis">
+                    <param id="0" name="Angle">90</param>
+                </action>
+                <action id="-8" name="Set angle" sid="801224607283862" type="EnemyPoddles">
+                    <param id="0" name="Angle">90</param>
+                </action>
+                <action id="-4" name="Set position to another object" sid="9234280595335021" type="ShipChassis">
+                    <param id="0" name="Object">EnemyPoddles</param>
+                    <param id="1" name="Image point (optional)">1</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="4043578331328867" type="ShipChassis">
+                    <param id="0" name="Pin to">EnemyPoddles</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="4210687926783285" type="ShipChassis">
+                    <param id="0" name="Object">ShipWingLeft</param>
+                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                    <param id="2" name="Image point">&quot;AttLeft&quot;</param>
+                </action>
+                <action id="-4" name="Set position to another object" sid="4467547923194714" type="ShipWingLeft">
+                    <param id="0" name="Object">ShipChassis</param>
+                    <param id="1" name="Image point (optional)">&quot;AttLeft&quot;</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="3125501871490539" type="ShipWingLeft">
+                    <param id="0" name="Pin to">ShipChassis</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="9130643333886786" type="ShipChassis">
+                    <param id="0" name="Object">ShipWingRight</param>
+                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                    <param id="2" name="Image point">&quot;AttRight&quot;</param>
+                </action>
+                <action id="-4" name="Set position to another object" sid="7117718889338889" type="ShipWingRight">
+                    <param id="0" name="Object">ShipChassis</param>
+                    <param id="1" name="Image point (optional)">&quot;AttRight&quot;</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="7781552084586921" type="ShipWingRight">
+                    <param id="0" name="Pin to">ShipChassis</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="823633818442744" type="ShipChassis">
+                    <param id="0" name="Object">ShipEngine</param>
+                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                    <param id="2" name="Image point">&quot;AttEngine&quot;</param>
+                </action>
+                <action id="-4" name="Set position to another object" sid="9355422553827415" type="ShipEngine">
+                    <param id="0" name="Object">ShipChassis</param>
+                    <param id="1" name="Image point (optional)">&quot;AttEngine&quot;</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="5449117162669818" type="ShipEngine">
+                    <param id="0" name="Pin to">ShipChassis</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Destroy any enemies which make it to the bottom of the screen and leave the layout.</comment>
+        <event-block sid="861808125425148">
+            <conditions>
+                <condition id="-2" name="Compare Y" sid="3447677484971486" type="EnemyPoddles">
+                    <param id="0" name="Comparison">5</param>
+                    <param id="1" name="Y co-ordinate">LayoutHeight</param>
+                </condition>
+                <condition id="-4" name="Is outside layout" sid="9170871452252962" type="EnemyPoddles" />
+                <condition id="1" name="Is overlapping another object" sid="9195673883686549" type="EnemyPoddles">
+                    <param id="0" name="Object">ShipChassis</param>
+                </condition>
+                <condition id="1" name="Is overlapping another object" sid="7042814803254363" type="ShipChassis">
+                    <param id="0" name="Object">ShipWingLeft</param>
+                </condition>
+                <condition id="1" name="Is overlapping another object" sid="1513158829629851" type="ShipChassis">
+                    <param id="0" name="Object">ShipWingRight</param>
+                </condition>
+                <condition id="1" name="Is overlapping another object" sid="1925770550002618" type="ShipChassis">
+                    <param id="0" name="Object">ShipEngine</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="2610097749784431" type="ShipEngine" />
+                <action id="-9" name="Destroy" sid="4095652992635046" type="ShipWingLeft" />
+                <action id="-9" name="Destroy" sid="4258649968403002" type="ShipWingRight" />
+                <action id="-9" name="Destroy" sid="4507249882624329" type="ShipChassis" />
+                <action id="-9" name="Destroy" sid="5155459739135779" type="EnemyPoddles" />
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

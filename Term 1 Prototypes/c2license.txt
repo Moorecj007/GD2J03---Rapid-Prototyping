@@ -1,0 +1,9 @@
+License type: EDUCATION
+Product: Construct 2
+Licensed to: Media Design School
+Email: gamedev@mediadesignschool.com
+Comment: Strictly for use at Media Design School (New Zealand)
+Timestamp: 1411514086
+Hash: 8B53C963B8E555767D62928703691F2C4391B6DFB95C37765
+
+This is an educational license valid for use on any number of computers at the named educational institute.  This license is valid for as long as the named institute is subscribed to Scirra's educational program.

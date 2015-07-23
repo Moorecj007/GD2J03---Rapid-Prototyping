@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2project>
+    <name>Space Upgrade</name>
+    <description></description>
+    <version>1.0</version>
+    <author></author>
+    <author-email></author-email>
+    <author-website></author-website>
+    <app-id></app-id>
+    <unique-id>2ajxfw52ycy8u</unique-id>
+    <saved-with-version>20600</saved-with-version>
+    <used-plugins>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+    </used-plugins>
+    <used-behaviors>
+        <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
+        <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
+        <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
+        <behavior author="Scirra" id="destroy" version="1">Destroy outside layout</behavior>
+        <behavior author="Scirra" id="wrap" version="1">Wrap</behavior>
+    </used-behaviors>
+    <used-effects />
+    <configurations>
+        <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
+    </configurations>
+    <window-size>
+        <width>480</width>
+        <height>640</height>
+    </window-size>
+    <pixel-rounding>0</pixel-rounding>
+    <preview-effects>1</preview-effects>
+    <use-loader-layout>0</use-loader-layout>
+    <configuration-settings>
+        <prop name="Clear background">Yes</prop>
+        <prop name="Enable WebGL">On</prop>
+        <prop name="Fullscreen in browser">Letterbox scale</prop>
+        <prop name="Hide address bar">No</prop>
+        <prop name="Loader style">Progress bar &amp; logo</prop>
+        <prop name="Preview browser">(default)</prop>
+        <prop name="Sampling">Linear</prop>
+        <prop name="Use iOS retina display">All devices</prop>
+    </configuration-settings>
+    <object-folder>
+        <object-folder name="Ship Parts">
+            <object-type name="ShipChassis" sid="6482127326020144">
+                <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="LeftWingAttached" sid="7642161410709999" type="boolean" />
+                    <instance-variable name="RightWingAttached" sid="7324890114113652" type="boolean" />
+                    <instance-variable name="EngineAttach" sid="9192347083115748" type="boolean" />
+                    <instance-variable name="Owned" sid="4168968279484564" type="boolean" />
+                </instance-variables>
+                <behaviors>
+                    <behavior-type name="BoundToLayout" sid="7826112987376603">
+                        <behavior id="bound" />
+                    </behavior-type>
+                    <behavior-type name="Pin" sid="1968654455526041">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="9616741677064349" speed="5">
+                        <frame duration="1" hotspotX="0.325" hotspotY="0.5">
+                            <image-point name="AttPod" x="0.25" y="0.5" />
+                            <image-point name="AttLeft" x="0.5" y="0" />
+                            <image-point name="AttRight" x="0.5" y="1" />
+                            <image-point name="AttEngine" x="0.025" y="0.5" />
+                            <image-point name="Fire" x="0.5" y="0.5" />
+                            <collision-poly>
+                                <point x="1" y="0.5" />
+                                <point x="0" y="1" />
+                                <point x="0" y="0" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="ShipEngine" sid="898571163631456">
+                <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="BodyAttached" sid="202155511647592" type="boolean" />
+                    <instance-variable name="Owned" sid="86992531394013" type="boolean" />
+                </instance-variables>
+                <behaviors>
+                    <behavior-type name="BoundToLayout" sid="9343985049891991">
+                        <behavior id="bound" />
+                    </behavior-type>
+                    <behavior-type name="Pin" sid="1366773887235541">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="9447913581917597" speed="5">
+                        <frame duration="1" hotspotX="0.325" hotspotY="0.5">
+                            <image-point name="Imagepoint 1" x="1.075" y="0.5" />
+                            <collision-poly>
+                                <point x="1" y="0.5" />
+                                <point x="0" y="1" />
+                                <point x="0" y="0" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="ShipWingLeft" sid="2970053086988694">
+                <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="BodyAttached" sid="809045653818283" type="boolean" />
+                    <instance-variable name="Owned" sid="5708086680841186" type="boolean" />
+                </instance-variables>
+                <behaviors>
+                    <behavior-type name="BoundToLayout" sid="3500991396314005">
+                        <behavior id="bound" />
+                    </behavior-type>
+                    <behavior-type name="Pin" sid="6982058260980622">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="8284706856663303" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.975">
+                            <collision-poly>
+                                <point x="1" y="0.5" />
+                                <point x="0" y="1" />
+                                <point x="0" y="0" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="Pod" sid="6164038704644948">
+                <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="EjectionFuel" sid="5110496565762287" type="number" />
+                    <instance-variable name="BodyAttached" sid="9700229104943607" type="boolean" />
+                </instance-variables>
+                <behaviors>
+                    <behavior-type name="BoundToLayout" sid="2050201254645039">
+                        <behavior id="bound" />
+                    </behavior-type>
+                    <behavior-type name="Pin" sid="8699389651750287">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="7263254180982618" speed="5">
+                        <frame duration="1" hotspotX="0.35" hotspotY="0.545455">
+                            <image-point name="BulletSpawn" x="1.1" y="0.545455" />
+                            <collision-poly>
+                                <point x="1" y="0.5" />
+                                <point x="0" y="1" />
+                                <point x="0" y="0" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="ShipWingRight" sid="8136866356801153">
+                <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="BodyAttached" sid="5805969908063419" type="boolean" />
+                    <instance-variable name="Owned" sid="9685513320645913" type="boolean" />
+                </instance-variables>
+                <behaviors>
+                    <behavior-type name="BoundToLayout" sid="191643829869217">
+                        <behavior id="bound" />
+                    </behavior-type>
+                    <behavior-type name="Pin" sid="8471937481975814">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="6568966705541211" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.025">
+                            <collision-poly>
+                                <point x="1" y="0.5" />
+                                <point x="0" y="1" />
+                                <point x="0" y="0" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="EnemyPoddles" sid="215667100332159">
+                <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="Health" sid="6260765879049106" type="number" />
+                    <instance-variable name="Points" sid="9840429981600279" type="number" />
+                </instance-variables>
+                <behaviors>
+                    <behavior-type name="Pin" sid="9159829269229663">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                    <behavior-type name="Bullet" sid="5914576876147037">
+                        <behavior id="Bullet" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="5136542732408016" speed="5">
+                        <frame duration="1" hotspotX="0.35" hotspotY="0.545455">
+                            <image-point name="Imagepoint 1" x="0.5" y="0.545455" />
+                            <collision-poly>
+                                <point x="0" y="1" />
+                                <point x="0" y="0" />
+                                <point x="1" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+        </object-folder>
+        <object-folder name="Projectiles">
+            <object-type name="invPlayerBullet" sid="760354675310759">
+                <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="Damage" sid="8953926411695259" type="number" />
+                    <instance-variable name="ImageID" sid="6541620328751599" type="number" />
+                </instance-variables>
+                <behaviors>
+                    <behavior-type name="Pin" sid="9811674728783642">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="8503989950357622" speed="5">
+                        <frame duration="1" hotspotX="0.533333" hotspotY="0.571429">
+                            <collision-poly>
+                                <point x="0.0666667" y="0.142857" />
+                                <point x="0.933333" y="0.142857" />
+                                <point x="0.933333" y="0.857143" />
+                                <point x="0.0666667" y="0.857143" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="EnemyBullet" sid="4842344705044441">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="Bullet" sid="4473338258502387">
+                        <behavior id="Bullet" />
+                    </behavior-type>
+                    <behavior-type name="DestroyOutsideLayout" sid="5389593309023205">
+                        <behavior id="destroy" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="5498152753980615" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.6">
+                            <collision-poly>
+                                <point x="0.916667" y="0.2" />
+                                <point x="0.916667" y="0.8" />
+                                <point x="0.0833333" y="0.8" />
+                                <point x="0.0833333" y="0.2" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="projPodGun" sid="446559088848568">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="Bullet" sid="9730640239312719">
+                        <behavior id="Bullet" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2870179905395205" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+        </object-folder>
+        <object-folder name="Background">
+            <object-type name="Star" sid="5128781183387047">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="Bullet" sid="1465469786538286">
+                        <behavior id="Bullet" />
+                    </behavior-type>
+                    <behavior-type name="Wrap" sid="272129936624438">
+                        <behavior id="wrap" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="5182934522234525" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+        </object-folder>
+        <object-folder name="UI">
+            <object-type name="txtChassis" sid="2434911336287919">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtEjection" sid="3979325983866635">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtEngine" sid="5726244524609062">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtLWing" sid="6549281309588988">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtRWing" sid="7815390031039816">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtScore" sid="2641530979269677">
+                <plugin id="Text" />
+                <instance-variables>
+                    <instance-variable name="Points" sid="4232441603735445" type="number" />
+                </instance-variables>
+            </object-type>
+        </object-folder>
+        <object-type name="Keyboard" sid="5193790999344359">
+            <plugin id="Keyboard" />
+        </object-type>
+    </object-folder>
+    <families />
+    <layout-folder>
+        <layout>Game Level.xml</layout>
+    </layout-folder>
+    <event-folder>
+        <event-sheet>Game Play.xml</event-sheet>
+        <event-sheet>Player.xml</event-sheet>
+        <event-sheet>Projectiles.xml</event-sheet>
+        <event-sheet>Enemies.xml</event-sheet>
+    </event-folder>
+    <global-instances>
+        <global-instance type="Keyboard" uid="5" />
+    </global-instances>
+    <sounds-folder />
+    <music-folder />
+    <files-folder>
+        <file-folder name="Icons">
+            <file name="icon-16.png" />
+            <file name="icon-32.png" />
+            <file name="icon-114.png" />
+            <file name="icon-128.png" />
+            <file name="icon-256.png" />
+            <file name="loading-logo.png" />
+        </file-folder>
+    </files-folder>
+</c2project>

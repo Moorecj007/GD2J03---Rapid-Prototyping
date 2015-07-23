@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Game Play</name>
+    <events>
+        <include>Projectiles</include>
+        <include>Player</include>
+        <comment>Destroy the initial star object in the layout.</comment>
+        <event-block sid="9513671949002526">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="8699167654693498" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="700760042524142" type="Star" />
+                <action id="-9" name="Destroy" sid="7335391327203321" type="projPodGun" />
+                <action id="-9" name="Destroy" sid="6441059800088235" type="invPlayerBullet" />
+                <action id="-9" name="Destroy" sid="2995508263188869" type="EnemyBullet" />
+                <action id="-9" name="Destroy" sid="8534189440462887" type="EnemyPoddles" />
+                <action id="0" name="Set text" sid="3213293275390561" type="txtChassis">
+                    <param id="0" name="Text">&quot;Chassis: None&quot;</param>
+                </action>
+                <action id="0" name="Set text" sid="6523740134575329" type="txtLWing">
+                    <param id="0" name="Text">&quot;L Wing: None&quot;</param>
+                </action>
+                <action id="0" name="Set text" sid="8141313253070024" type="txtRWing">
+                    <param id="0" name="Text">&quot;R Wing: None&quot;</param>
+                </action>
+                <action id="0" name="Set text" sid="2188379118155669" type="txtEngine">
+                    <param id="0" name="Text">&quot;Engine: None&quot;</param>
+                </action>
+                <action id="0" name="Set text" sid="2951151740770031" type="txtScore">
+                    <param id="0" name="Text">&quot;Score : &quot; &amp; txtScore.Points</param>
+                </action>
+                <action id="0" name="Set text" sid="8611105452261034" type="txtEjection">
+                    <param id="0" name="Text">&quot;Ejection Fuel: &quot; &amp; Pod.EjectionFuel</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Create 50 random stars with different speeds and sizes on startup to create a space background effect.  The stars have a wrap behavior which keeps them on-screen.</comment>
+        <event-block sid="6025705671193806">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="5318477676281649" type="System" />
+                <condition id="-12" name="Repeat" sid="726378032458448" type="System">
+                    <param id="0" name="Count">50</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="4047698778440161" type="System">
+                    <param id="0" name="Object to create">Star</param>
+                    <param id="1" name="Layer">&quot;Background&quot;</param>
+                    <param id="2" name="X">random(LayoutWidth)</param>
+                    <param id="3" name="Y">random(LayoutHeight)</param>
+                </action>
+                <action behavior="Bullet" id="0" name="Set speed" sid="2241259203633812" type="Star">
+                    <param id="0" name="Speed">random(10, 80)</param>
+                </action>
+                <action id="9" name="Set scale" sid="464692431671631" type="Star">
+                    <param id="0" name="Scale">Self.Bullet.Speed / 250</param>
+                </action>
+                <action id="-16" name="Set opacity" sid="4759652229348371" type="Star">
+                    <param id="0" name="Opacity">Self.Bullet.Speed</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>If the players bullet hits an enemy. Subtract the bullets damage from the enemy. Destroy the enemy if its health is reduced to 0 or less.</comment>
+        <event-block sid="6177640970352595">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="8692624676881835" type="EnemyPoddles">
+                    <param id="0" name="Instance variable">Health</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="622673838697307" type="EnemyPoddles" />
+            </actions>
+        </event-block>
+        <comment>Every 2 seconds make a new enemy spawn at a random horizontal position at the top of the screen.</comment>
+        <event-block sid="4877049966083035">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="1218153246585705" type="System">
+                    <param id="0" name="Interval (seconds)">2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="3375737332128267" type="System">
+                    <param id="0" name="Object to create">EnemyPoddles</param>
+                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                    <param id="2" name="X">random(30, 450)</param>
+                    <param id="3" name="Y">-20</param>
+                </action>
+                <action id="-3" name="Create object" sid="6872101003843555" type="System">
+                    <param id="0" name="Object to create">ShipChassis</param>
+                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                    <param id="2" name="X">EnemyPoddles.X</param>
+                    <param id="3" name="Y">EnemyPoddles.Y</param>
+                </action>
+                <action id="-8" name="Set angle" sid="9010699310190844" type="ShipChassis">
+                    <param id="0" name="Angle">90</param>
+                </action>
+                <action id="-8" name="Set angle" sid="4331507419477834" type="EnemyPoddles">
+                    <param id="0" name="Angle">90</param>
+                </action>
+                <action id="-4" name="Set position to another object" sid="3961283191391921" type="EnemyPoddles">
+                    <param id="0" name="Object">ShipChassis</param>
+                    <param id="1" name="Image point (optional)">1</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="7568112832864438" type="EnemyPoddles">
+                    <param id="0" name="Pin to">ShipChassis</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="5275746127319511" type="ShipChassis">
+                    <param id="0" name="Object">ShipWingLeft</param>
+                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                    <param id="2" name="Image point">&quot;AttLeft&quot;</param>
+                </action>
+                <action id="-4" name="Set position to another object" sid="1336558985939622" type="ShipWingLeft">
+                    <param id="0" name="Object">ShipChassis</param>
+                    <param id="1" name="Image point (optional)">&quot;AttLeft&quot;</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="542770427313981" type="ShipWingLeft">
+                    <param id="0" name="Pin to">ShipChassis</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="7487961844766378" type="ShipChassis">
+                    <param id="0" name="Object">ShipWingRight</param>
+                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                    <param id="2" name="Image point">&quot;AttRight&quot;</param>
+                </action>
+                <action id="-4" name="Set position to another object" sid="2889303455810257" type="ShipWingRight">
+                    <param id="0" name="Object">ShipChassis</param>
+                    <param id="1" name="Image point (optional)">&quot;AttRight&quot;</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="4900776267016469" type="ShipWingRight">
+                    <param id="0" name="Pin to">ShipChassis</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="3233049993474726" type="ShipChassis">
+                    <param id="0" name="Object">ShipEngine</param>
+                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                    <param id="2" name="Image point">&quot;AttEngine&quot;</param>
+                </action>
+                <action id="-4" name="Set position to another object" sid="9131709001928016" type="ShipEngine">
+                    <param id="0" name="Object">ShipChassis</param>
+                    <param id="1" name="Image point (optional)">&quot;AttEngine&quot;</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="739270242594949" type="ShipEngine">
+                    <param id="0" name="Pin to">ShipChassis</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Destroy any enemies which make it to the bottom of the screen and leave the layout.</comment>
+        <event-block sid="2126416269059962">
+            <conditions>
+                <condition id="-2" name="Compare Y" sid="5507139461764289" type="EnemyPoddles">
+                    <param id="0" name="Comparison">5</param>
+                    <param id="1" name="Y co-ordinate">LayoutHeight</param>
+                </condition>
+                <condition id="-4" name="Is outside layout" sid="9662436568817472" type="EnemyPoddles" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="7367196913594509" type="EnemyPoddles" />
+            </actions>
+        </event-block>
+        <event-block sid="9978878267043504">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="6193950555333504" type="System" />
+                <condition id="1" name="Is overlapping another object" sid="176378733194665" type="EnemyPoddles">
+                    <param id="0" name="Object">ShipChassis</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Set Y" sid="6922857964981545" type="ShipChassis">
+                    <param id="0" name="Y">ShipChassis.Y - 3</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
